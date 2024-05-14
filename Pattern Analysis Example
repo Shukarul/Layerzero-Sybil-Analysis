@@ -1,0 +1,11 @@
+import pandas as pd
+import networkx as nx
+
+# Load transactions into a DataFrame
+df = pd.DataFrame(transactions['result'])
+
+# Create a network graph
+G = nx.from_pandas_edgelist(df, 'from', 'to')
+
+# Analyze the network for clusters
+clusters = nx.algorithms.community.greedy_modularity_communities(G)
