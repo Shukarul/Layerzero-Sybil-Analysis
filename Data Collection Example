@@ -1,0 +1,16 @@
+import requests
+
+addresses = [
+    "0xdfea633488287211249de852b891f9817fdb0e31",
+    "0x9e4450ba387fA7AbFfcFaBACE694ef44c8dFd8a4",
+    # Add the rest of the addresses here...
+]
+
+def get_transactions(address):
+    url = f"https://api.etherscan.io/api?module=account&action=txlist&address={address}&startblock=0&endblock=99999999&sort=asc&apikey=YourApiKey"
+    response = requests.get(url)
+    return response.json()
+
+for address in addresses:
+    transactions = get_transactions(address)
+    # Process transactions data
